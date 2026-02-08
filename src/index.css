@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 220 25% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 10%;
+
+    --primary: 38 92% 50%;
+    --primary-foreground: 220 25% 5%;
+
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 25% 10%;
+
+    --muted: 220 15% 94%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 220 20% 14%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 38 92% 50%;
+
+    --radius: 0.75rem;
+
+    --hero-bg: 220 25% 8%;
+    --hero-foreground: 0 0% 98%;
+    --hero-muted: 220 15% 65%;
+    --gold: 38 92% 50%;
+    --gold-light: 38 85% 62%;
+    --gold-dark: 38 95% 38%;
+    --dark-surface: 220 20% 12%;
+    --dark-surface-2: 220 18% 16%;
+    --dark-border: 220 15% 22%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 0 0% 98%;
+    --card: 220 20% 12%;
+    --card-foreground: 0 0% 98%;
+    --popover: 220 20% 12%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 38 92% 50%;
+    --primary-foreground: 220 25% 5%;
+    --secondary: 220 18% 16%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 10% 60%;
+    --accent: 220 20% 20%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+    --ring: 38 92% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+
+  .container-wide {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(var(--gold-light))];
+  }
+
+  .glass-card {
+    @apply bg-[hsl(var(--dark-surface)/0.6)] backdrop-blur-xl border border-[hsl(var(--dark-border))];
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 40px -10px hsl(var(--gold) / 0.3);
+  }
+
+  .hero-gradient {
+    background: radial-gradient(ellipse at 30% 50%, hsl(var(--gold) / 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, hsl(var(--gold) / 0.04) 0%, transparent 50%),
+                hsl(var(--hero-bg));
+  }
+
+  .dark-section {
+    background: hsl(var(--hero-bg));
+    color: hsl(var(--hero-foreground));
+  }
+
+  .service-card {
+    @apply relative overflow-hidden rounded-2xl p-6 md:p-8 transition-all duration-500 cursor-pointer;
+    @apply bg-card border border-border hover:border-[hsl(var(--gold)/0.4)];
+    @apply hover:shadow-[0_20px_60px_-15px_hsl(var(--gold)/0.15)];
+    @apply hover:-translate-y-1;
+  }
+
+  .cta-button {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-sans font-semibold text-sm tracking-wide uppercase transition-all duration-300;
+    @apply bg-[hsl(var(--gold))] text-[hsl(var(--hero-bg))] hover:bg-[hsl(var(--gold-light))] hover:shadow-[0_10px_40px_-10px_hsl(var(--gold)/0.5)];
+  }
+
+  .cta-button-outline {
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-sans font-semibold text-sm tracking-wide uppercase transition-all duration-300;
+    @apply border-2 border-[hsl(var(--gold)/0.5)] text-[hsl(var(--hero-foreground))] hover:bg-[hsl(var(--gold)/0.1)] hover:border-[hsl(var(--gold))];
+  }
+
+  .section-label {
+    @apply inline-block text-xs font-sans font-bold tracking-[0.2em] uppercase mb-4;
+    @apply text-[hsl(var(--gold))];
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6;
+  }
+
+  .section-subtitle {
+    @apply text-lg md:text-xl leading-relaxed max-w-2xl;
+    color: hsl(var(--muted-foreground));
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: hsl(var(--gold) / 0.3);
+  color: hsl(var(--foreground));
+}
